@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokusho</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Merriweather', serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Hide scrollbar for cleaner look if content overflows in modal-like views */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 min-h-screen flex flex-col selection:bg-indigo-100 selection:text-indigo-900">
+
+    <!-- Navigation Bar (Simple) -->
+    <nav class="w-full px-6 py-4 flex justify-between items-center bg-white/50 backdrop-blur-sm sticky top-0 z-50 border-b border-stone-200">
+        <a href="#" onclick="event.preventDefault(); navigateTo('home')" class="flex items-center gap-2 group decoration-transparent">
+            <i data-lucide="book-open" class="text-indigo-600 w-6 h-6 transition-transform group-hover:scale-110"></i>
+            <span class="serif font-bold text-xl text-stone-900 tracking-tight">Dokusho</span>
+        </a>
+        <div class="text-sm text-stone-500">
+            <span id="current-page-indicator" class="hidden md:inline-block">Home</span>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow flex flex-col relative w-full max-w-4xl mx-auto px-4 sm:px-6 py-12">
+        
+        <!-- HOME PAGE -->
+        <section id="page-home" class="flex flex-col items-center justify-center flex-grow text-center fade-in">
+            <div class="mb-8 p-4 bg-indigo-50 rounded-full">
+                <i data-lucide="library" class="w-12 h-12 text-indigo-600"></i>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-stone-900 mb-6 tracking-tight">Dokusho</h1>
+            <p class="text-lg md:text-xl text-stone-600 max-w-lg mb-12 leading-relaxed serif italic">
+                "Reading is a journey of the mind."
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md justify-center">
+                <!-- Links styled as action cards/buttons -->
+                <a href="#tos" onclick="event.preventDefault(); navigateTo('tos')" class="group relative px-6 py-3 bg-white border border-stone-200 rounded-lg shadow-sm hover:shadow-md hover:border-indigo-300 transition-all duration-200 flex items-center justify-between no-underline w-full sm:w-auto">
+                    <span class="font-medium text-stone-700 group-hover:text-indigo-600">Terms of Service</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-stone-400 group-hover:translate-x-1 group-hover:text-indigo-500 transition-all ml-4"></i>
+                </a>
+                
+                <a href="#privacy" onclick="event.preventDefault(); navigateTo('privacy')" class="group relative px-6 py-3 bg-white border border-stone-200 rounded-lg shadow-sm hover:shadow-md hover:border-indigo-300 transition-all duration-200 flex items-center justify-between no-underline w-full sm:w-auto">
+                    <span class="font-medium text-stone-700 group-hover:text-indigo-600">Privacy Policy</span>
+                    <i data-lucide="shield" class="w-4 h-4 text-stone-400 group-hover:scale-110 group-hover:text-indigo-500 transition-all ml-4"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- TERMS OF SERVICE PAGE -->
+        <section id="page-tos" class="hidden fade-in">
+            <a href="#home" onclick="event.preventDefault(); navigateTo('home')" class="mb-8 flex items-center gap-2 text-stone-500 hover:text-indigo-600 transition-colors group no-underline inline-flex">
+                <i data-lucide="arrow-left" class="w-4 h-4 transition-transform group-hover:-translate-x-1"></i>
+                <span class="font-medium text-sm">Back to Home</span>
+            </a>
+
+            <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-stone-100">
+                <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-2">Terms of Service</h2>
+                <p class="text-stone-500 text-sm mb-8 uppercase tracking-wider font-semibold">Last Updated: October 24, 2023</p>
+
+                <div class="prose prose-stone prose-lg max-w-none">
+                    <h3>1. Acceptance of Terms</h3>
+                    <p>By accessing and using Dokusho ("the Service"), you accept and agree to be bound by the terms and provision of this agreement.</p>
+
+                    <h3>2. Use License</h3>
+                    <p>Permission is granted to temporarily download one copy of the materials (information or software) on Dokusho's website for personal, non-commercial transitory viewing only.</p>
+                    <ul class="list-disc pl-5 space-y-2 text-stone-600">
+                        <li>You may not modify or copy the materials.</li>
+                        <li>You may not use the materials for any commercial purpose.</li>
+                        <li>You may not attempt to decompile or reverse engineer any software contained on the Service.</li>
+                    </ul>
+
+                    <h3>3. Disclaimer</h3>
+                    <p>The materials on Dokusho's website are provided on an 'as is' basis. Dokusho makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability.</p>
+
+                    <h3>4. Limitations</h3>
+                    <p>In no event shall Dokusho or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Dokusho's website.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRIVACY POLICY PAGE (Updated with User Content) -->
+        <section id="page-privacy" class="hidden fade-in">
+            <a href="#home" onclick="event.preventDefault(); navigateTo('home')" class="mb-8 flex items-center gap-2 text-stone-500 hover:text-indigo-600 transition-colors group no-underline inline-flex">
+                <i data-lucide="arrow-left" class="w-4 h-4 transition-transform group-hover:-translate-x-1"></i>
+                <span class="font-medium text-sm">Back to Home</span>
+            </a>
+
+            <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-stone-100">
+                <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-2">Privacy Policy</h2>
+                <p class="text-stone-500 text-sm mb-8 uppercase tracking-wider font-semibold">Effective Date: November 16, 2025</p>
+
+                <div class="prose prose-stone prose-lg max-w-none">
+                    <p class="lead text-lg text-stone-700">
+                        Your privacy is extremely important to us. This application is designed to function without collecting or sharing any of your personal information.
+                    </p>
+
+                    <h3>1. Information We Do Not Collect</h3>
+                    <p>
+                        We do not, and will never, collect, store, or transmit any personal data from you. This includes, but is not limited to, your name, email address, location, or any other identifiable information. The application operates entirely on your device.
+                    </p>
+
+                    <h3>2. Information We Do Not Share</h3>
+                    <p>
+                        Since we do not collect any of your data, we have nothing to share with any third party. We do not sell, trade, or otherwise transfer your information to anyone.
+                    </p>
+
+                    <h3>3. Application Permissions</h3>
+                    <p>
+                        To provide its core functionality, the application requests the following permissions. These permissions are used only for the stated purpose and are not used to collect any of your data.
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>
+                            <strong>Bluetooth Access:</strong> This permission is required solely to allow the application to connect to and communicate with your nearby Bluetooth devices. No data from this connection is recorded or stored by us.
+                        </li>
+                        <li>
+                            <strong>Device Storage Access:</strong> This permission is required to allow you to load your own files (such as documents, images, or other media) from your device's storage into the application. The application only accesses files that you specifically choose to load. We do not scan your storage or collect any files.
+                        </li>
+                    </ul>
+
+                    <h3>4. Changes to This Privacy Policy</h3>
+                    <p>
+                        If we ever update this policy, we will post the changes on this page. Our core promise of not collecting or sharing your personal data will not change.
+                    </p>
+
+                    <h3>5. Contact Us</h3>
+                    <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-r-lg">
+                        <p class="m-0 text-indigo-900">
+                            If you have any questions about this Privacy Policy, please feel free to contact us at <a href="mailto:Dokusho.Support@proton.me" class="font-bold text-indigo-700 hover:underline">Dokusho.Support@proton.me</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-8 text-center border-t border-stone-200 mt-auto bg-stone-100">
+        <p class="text-stone-500 text-sm flex items-center justify-center gap-2">
+            &copy; 2023 Dokusho. All rights reserved. 
+            <span class="w-1 h-1 rounded-full bg-stone-300"></span>
+            <a href="#privacy" onclick="event.preventDefault(); navigateTo('privacy')" class="text-xs hover:text-indigo-600 cursor-pointer transition-colors no-underline text-stone-500">Privacy</a>
+            <span class="w-1 h-1 rounded-full bg-stone-300"></span>
+            <a href="#tos" onclick="event.preventDefault(); navigateTo('tos')" class="text-xs hover:text-indigo-600 cursor-pointer transition-colors no-underline text-stone-500">Terms</a>
+        </p>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Simple Router Logic
+        function navigateTo(pageId) {
+            // IDs of all pages
+            const pages = ['home', 'tos', 'privacy'];
+            
+            // Hide all pages
+            pages.forEach(id => {
+                const element = document.getElementById(`page-${id}`);
+                if (element) {
+                    element.classList.add('hidden');
+                }
+            });
+
+            // Show selected page
+            const selectedPage = document.getElementById(`page-${pageId}`);
+            if (selectedPage) {
+                selectedPage.classList.remove('hidden');
+                
+                // Reset scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Re-trigger animation for effect
+                selectedPage.classList.remove('fade-in');
+                void selectedPage.offsetWidth; // Trigger reflow
+                selectedPage.classList.add('fade-in');
+            }
+
+            // Update Nav Indicator
+            const indicator = document.getElementById('current-page-indicator');
+            if (pageId === 'home') indicator.innerText = 'Home';
+            if (pageId === 'tos') indicator.innerText = 'Terms of Service';
+            if (pageId === 'privacy') indicator.innerText = 'Privacy Policy';
+        }
+
+        // Initialize view based on hash or default to home
+        // Small enhancement: basic hash handling to support browser back/forward buttons minimally
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.slice(1);
+            if (hash === 'tos' || hash === 'privacy') {
+                navigateTo(hash);
+            } else {
+                navigateTo('home');
+            }
+        });
+
+        // Initial load check
+        const initialHash = window.location.hash.slice(1);
+        if (initialHash === 'tos' || initialHash === 'privacy') {
+            navigateTo(initialHash);
+        } else {
+            navigateTo('home');
+        }
+    </script>
+</body>
+</html>
